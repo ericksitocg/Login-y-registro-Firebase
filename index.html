@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Login Form</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <section>
+	<img class="wave" src="img/wave.png">
+	<div class="container" id="app">
+		<div class = "img">
+			<img src="img/access.svg">
+		</div>
+		<div class="login-content">
+			<form action="index.html">
+				<img src="img/log.jpg">
+				<h2 class="title">BIENVENIDO</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Correo</h5>
+           		   		<input type="text" class="input" id="email">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Contraseña</h5>
+           		    	<input type="password" class="input" id="pass">
+            	   </div>
+            	</div>
+				<input type="button" class="btn" value="Login" onclick="iniciarSesion()">
+					<!--Elemento de prueba-->
+					<h1 id="login"></h1>
+			</form>
+        </div>
+	</div>
+    </section>
+    <footer data-intro="Puede seguirnos a las siguientes redes sociales" id="footer">
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fas fa-envelope"></i>
+
+    <p class="footerText">© Copyright 2020 Merkadito</p>
+
+    </footer>
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+	<script type="text/javascript" src="js/ind.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+<!-- Funciones de inicio de sesion -->
+<script>
+    function iniciarSesion(){
+    var email=document.getElementById('email').value;
+    var pass=document.getElementById('pass').value;
+    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+    var errorCode = error.code;
+	var errorMessage = error.message;
+	alert(errorMessage);
+  });
+}
+</script>
+
+<!-- Funciones de inicio de sesion -->
+<script>
+	  function cerrar(){
+    firebase.auth().signOut()
+    .then(function(){
+      console.log('Salir');
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+   }
+</script>
+
+<!-- Observador-->
+<script>
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    var providerData = user.providerData;
+    document.getElementById('login').innerHTML=
+    `<p>Logueado como `+ user.email+`<p>
+      <div class="media border p-3">
+      <div >
+        <h4> ${user.email} <small><i>Posted on February 19, 2016</i></small></h4>
+      </div>
+    </div>
+    <button type="button" class="btn btn-danger" onclick="cerrar()">Cerrar sesion</button>
+    `;
+  } else {
+    document.getElementById('login').innerHTML="Usuario no logueado ";
+  }
+  });
+</script>
+</body>
+</html>
