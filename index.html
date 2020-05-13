@@ -15,6 +15,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -58,72 +65,23 @@
     <i class="fab fa-facebook-f"></i>
     <i class="fab fa-instagram"></i>
     <i class="fas fa-envelope"></i>
-
     <p class="footerText">© Copyright 2020 Merkadito</p>
-
     </footer>
- <!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
-
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
-	<script type="text/javascript" src="js/ind.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	
 <!-- Funciones de inicio de sesion -->
 <script>
-    function iniciarSesion(){
-    var email=document.getElementById('email').value;
-    var pass=document.getElementById('pass').value;
-    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
-    var errorCode = error.code;
-	var errorMessage = error.message;
-	alert(errorMessage);
-  });
-}
+
 </script>
 
 <!-- Funciones de inicio de sesion -->
 <script>
-	  function cerrar(){
-    firebase.auth().signOut()
-    .then(function(){
-      console.log('Salir');
-    })
-    .catch(function(error){
-      console.log(error);
-    })
-   }
+
 </script>
 
 <!-- Observador-->
 <script>
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var isAnonymous = user.isAnonymous;
-    var uid = user.uid;
-    var providerData = user.providerData;
-    document.getElementById('login').innerHTML=
-    `<p>Logueado como `+ user.email+`<p>
-      <div class="media border p-3">
-      <div >
-        <h4> ${user.email} <small><i>Posted on February 19, 2016</i></small></h4>
-      </div>
-    </div>
-    <button type="button" class="btn btn-danger" onclick="cerrar()">Cerrar sesion</button>
-    `;
-  } else {
-    document.getElementById('login').innerHTML="Usuario no logueado ";
-  }
-  });
 </script>
+<script type="text/javascript" src="js/firebaseConfig.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
