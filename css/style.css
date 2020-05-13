@@ -1,5 +1,6 @@
-title{
-
+#login{
+  display: flex;
+  align-items: center;
 }
 
 *{
@@ -13,13 +14,6 @@ body{
     overflow: hidden;
 }
 
-.content{
-
-}
-
-.content-direc{
-	
-}
 .wave{
 	position: fixed;
 	bottom: 0;

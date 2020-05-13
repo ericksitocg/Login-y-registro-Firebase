@@ -38,16 +38,18 @@
     var uid = user.uid;
     var providerData = user.providerData;
     document.getElementById('login').innerHTML=
-    `<p>Logueado como `+ user.email+`<p>
+    `<div>
+    <p>Logueado como `+ user.email+`<p>
       <div class="media border p-3">
       <div >
         <h4> ${user.email} <small><i>Posted on February 19, 2016</i></small></h4>
       </div>
     </div>
     <button type="button" class="btn btn-danger" onclick="cerrar()">Cerrar sesion</button>
+    </div>
     `;
   } else {
-    document.getElementById('login').innerHTML="Usuario no logueado ";
+    document.getElementById('login').innerHTML="";
   }
   });
 
@@ -79,8 +81,10 @@ function cerrar(){
   firebase.auth().signOut()
   .then(function(){
     console.log('Salir');
+    mostrarCamposRegistro();
   })
   .catch(function(error){
+    ocultarCamposRegistro();
     alert(error.message);
   })
  }
@@ -89,9 +93,14 @@ function cerrar(){
 function iniciarSesion(){
   var email=document.getElementById('email').value;
   var pass=document.getElementById('pass').value;
-  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+  firebase.auth().signInWithEmailAndPassword(email, pass)
+  .then(function(){
+    ocultarCamposRegistro();
+  })
+  .catch(function(error) {
   var errorCode = error.code;
   var errorMessage = error.message;
+  mostrarCamposRegistro();
   if(error.code== "auth/invalid-email"){
     alert("La dirección de correo electrónico no tiene el formato correcto.");
   }
@@ -102,4 +111,14 @@ function iniciarSesion(){
     alert(errorMessage);
   }
     });
+}
+
+function mostrarCamposRegistro(){
+  $("#campos-login").show();
+  $("#login").hide();
+}
+
+function ocultarCamposRegistro(){
+  $("#campos-login").hide();
+  $("#login").show();
 }
