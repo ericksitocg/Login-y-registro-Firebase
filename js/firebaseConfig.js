@@ -62,8 +62,14 @@
       if(error.code== "auth/invalid-email"){
         alert("La dirección de correo electrónico no tiene el formato correcto.");
       }
+      else if (error.code=="auth/weak-password"){
+        alert("La contraseña debe tener 6 caracteres o mas.");
+      }
+      else if (error.code=="auth/email-already-in-use"){
+        alert("La correo ya esta en uso.");
+      }
       else{
-        alert(errorMessage);
+        alert(errorCode);
       }
     });
 }
