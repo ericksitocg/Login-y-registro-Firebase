@@ -57,9 +57,14 @@
     var pass=document.getElementById('pass').value;
     firebase.auth().createUserWithEmailAndPassword(email, pass)
     .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if(error.code== "auth/invalid-email"){
+        alert("La dirección de correo electrónico no tiene el formato correcto.");
+      }
+      else{
         alert(errorMessage);
+      }
     });
 }
 
@@ -70,7 +75,7 @@ function cerrar(){
     console.log('Salir');
   })
   .catch(function(error){
-    console.log(error);
+    alert(error.message);
   })
  }
 
@@ -80,7 +85,15 @@ function iniciarSesion(){
   var pass=document.getElementById('pass').value;
   firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
   var errorCode = error.code;
-var errorMessage = error.message;
-alert(errorMessage);
-});
+  var errorMessage = error.message;
+  if(error.code== "auth/invalid-email"){
+    alert("La dirección de correo electrónico no tiene el formato correcto.");
+  }
+  else if(error.code== "auth/wrong-password"){
+    alert("Contraseña incorrecta.");
+  }
+  else{
+    alert(errorMessage);
+  }
+    });
 }
