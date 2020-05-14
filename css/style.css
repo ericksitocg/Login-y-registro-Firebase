@@ -3,6 +3,10 @@
   align-items: center;
 }
 
+#regis{
+  overflow: scroll;
+}
+
 *{
 	padding: 0;
 	margin: 0;
