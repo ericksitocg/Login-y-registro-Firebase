@@ -5,6 +5,9 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+   </script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
@@ -19,7 +22,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
   <body>
-
+<div id="regis">
   	<img class="wave" src="img/wave.png">
   	<div class="container">
   		<div class="img">
@@ -29,15 +32,18 @@
   			<form id="form-registro">
           <img src="img/log.jpg">
           <h2 class="title">Ingrese sus datos</h2>
+          <div class="content-input">
               <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
                  </div>
-                 <div class="div">
+                 <div class="div" id="campoNombre">
                     <h5>Nombre</h5>
                     <input type="text" class="input" id="nombre">
                  </div>
               </div>
+         </div>
+         <div class="content-input">
               <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
@@ -47,6 +53,9 @@
                     <input type="text" class="input" id="apellido">
                  </div>
               </div>
+
+         </div>
+         <div class="content-input">
               <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
@@ -56,6 +65,9 @@
                     <input type="text" class="input" id="telefono">
                  </div>
               </div>
+
+         </div>
+         <div class="content-input">
               <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
@@ -65,6 +77,10 @@
                     <input type="text" class="input" id="email">
                  </div>
               </div>
+
+         </div>
+
+         <div class="content-input">
               <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
@@ -73,7 +89,10 @@
                     <h5>Direccion</h5>
                     <input type="text" class="input" id="direccion">
                  </div>
-              </div>
+             </div>
+
+         </div>
+         <div class="content-input">
               <div class="input-div pass">
                  <div class="i"> 
                     <i class="fas fa-lock"></i>
@@ -83,7 +102,10 @@
                     <input type="password" class="input" id="pass">
                  </div>
               </div>
-              <div class="input-div pass">
+
+         </div>
+         <div class="content-input">
+               <div class="input-div pass">
                  <div class="i"> 
                     <i class="fas fa-lock"></i>
                  </div>
@@ -92,6 +114,9 @@
                     <input type="password" class="input">
                  </div>
               </div>
+
+
+         </div>  
             <label class="checkbox">
               <input type="checkbox">
               <span>Acepto términos y condiciones del servicio</span>
@@ -99,9 +124,8 @@
             <input type="button" class="btn" value="Registro" onclick="registrar()">
             <label>Si ya posees cuenta, haz clic aqui</label>
             <a href="index.html" class="btn">Iniciar Sesion</a></form>
-
-
       </div>
+   </div>
 </div>
 <!-- Funciones de registro-->
 <script>

@@ -21,6 +21,9 @@ firebase.analytics();
 
 var app = document.getElementById('app');
 
+//Funcion validacion
+//var elemPrueba = document.getElementById()
+
 //Observador
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -34,11 +37,6 @@ firebase.auth().onAuthStateChanged(function (user) {
     document.getElementById('login').innerHTML =
       `<div>
     <p>Logueado como `+ user.email + `<p>
-      <div class="media border p-3">
-      <div >
-        <h4> ${user.email} <small><i>Posted on February 19, 2016</i></small></h4>
-      </div>
-    </div>
     <button type="button" class="btn btn-danger" onclick="cerrar()">Cerrar sesion</button>
     </div>
     `;
@@ -55,6 +53,12 @@ function registrar() {
   var pass = document.getElementById('pass').value;
   var direccion = document.getElementById('direccion').value;
   var telefono = document.getElementById('telefono').value;
+  //Validaciones previas al registro
+
+  if(nombre === ""){
+  //  $("#campoNombre").after("<div>Mensaje de precaución.</div>");
+  }
+
   db.collection("clientes").doc().set({
     nombre: nombre,
     apellido: apellido,
@@ -62,9 +66,10 @@ function registrar() {
     direccion: direccion,
     telefono: telefono
   });
-  console.log('ya grabó');
-
-  firebase.auth().createUserWithEmailAndPassword(email, pass)
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+    .then(function(){
+      alert("Usuario registrado");
+    })
     .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;

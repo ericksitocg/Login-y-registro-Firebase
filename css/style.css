@@ -18,6 +18,10 @@ body{
     overflow: hidden;
 }
 
+.alerta-error{
+  color: red;
+  text-align: left;
+}
 .wave{
 	position: fixed;
 	bottom: 0;
