@@ -33,7 +33,7 @@
           <img src="img/log.jpg">
           <h2 class="title">Ingrese sus datos</h2>
           <div class="content-input">
-              <div class="input-div one">
+            <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
                  </div>
@@ -42,9 +42,10 @@
                     <input type="text" class="input" id="nombre">
                  </div>
               </div>
+            <div class="alerta-error" id="alerta-error-nombre">Ingrese un nombre válido</div>
          </div>
          <div class="content-input">
-              <div class="input-div one">
+            <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
                  </div>
@@ -53,10 +54,10 @@
                     <input type="text" class="input" id="apellido">
                  </div>
               </div>
-
+            <div class="alerta-error" id="alerta-error-apellido">Ingrese un apellido válido</div>
          </div>
          <div class="content-input">
-              <div class="input-div one">
+            <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
                  </div>
@@ -65,10 +66,10 @@
                     <input type="text" class="input" id="telefono">
                  </div>
               </div>
-
+            <div class="alerta-error" id="alerta-error-telefono">Ingrese un teléfono válido</div>
          </div>
          <div class="content-input">
-              <div class="input-div one">
+            <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
                  </div>
@@ -77,11 +78,11 @@
                     <input type="text" class="input" id="email">
                  </div>
               </div>
-
+            <div class="alerta-error" id="alerta-error-email">Ingrese un correo válido</div>
          </div>
 
          <div class="content-input">
-              <div class="input-div one">
+            <div class="input-div one">
                  <div class="i">
                     <i class="fas fa-user"></i>
                  </div>
@@ -90,10 +91,10 @@
                     <input type="text" class="input" id="direccion">
                  </div>
              </div>
-
+            <div class="alerta-error" id="alerta-error-direccion">Ingrese una dirección válida</div>
          </div>
          <div class="content-input">
-              <div class="input-div pass">
+            <div class="input-div pass">
                  <div class="i"> 
                     <i class="fas fa-lock"></i>
                  </div>
@@ -102,26 +103,25 @@
                     <input type="password" class="input" id="pass">
                  </div>
               </div>
-
+            <div class="alerta-error" id="alerta-error-long">Debe tener almenos 6 digitos</div>
          </div>
          <div class="content-input">
-               <div class="input-div pass">
+            <div class="input-div pass">
                  <div class="i"> 
                     <i class="fas fa-lock"></i>
                  </div>
                  <div class="div">
                     <h5>Repetir Contraseña</h5>
-                    <input type="password" class="input">
+                    <input type="password" class="input" id="pass_retry">
                  </div>
               </div>
-
-
+            <div class="alerta-error" id="alerta-error-reply">Ingrese nuevamente su contraseña</div>
          </div>  
-            <label class="checkbox">
-              <input type="checkbox">
+            <div class="checkbox" id="contenedor-terminos">
+              <input type="checkbox" id="checkbox-terminos">
               <span>Acepto términos y condiciones del servicio</span>
-            </label>
-            <input type="button" class="btn" value="Registro" onclick="registrar()">
+            </div>
+            <input type="button" class="btn" value="Registro" onclick="registrar()" id="bton-registrar">
             <label>Si ya posees cuenta, haz clic aqui</label>
             <a href="index.html" class="btn">Iniciar Sesion</a></form>
       </div>

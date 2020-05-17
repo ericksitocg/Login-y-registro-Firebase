@@ -42,6 +42,7 @@
 			<form action="index.html">
 				<img src="img/log.jpg">
 				<h2 class="title">BIENVENIDO</h2>
+			<div class="content-input">
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
@@ -49,9 +50,12 @@
            		   <div class="div">
            		   		<h5>Correo</h5>
            		   		<input type="text" class="input" id="email">
-           		   </div>
-           		</div>
-           		<div class="input-div pass">
+					  </div>
+				   </div>
+			   <div class="alerta-error">Por favor ingrese su correo</div>
+			</div>
+			<div class="content-input">
+			   <div class="input-div pass">
            		   <div class="i"> 
            		    	<i class="fas fa-lock"></i>
            		   </div>
@@ -59,7 +63,9 @@
            		    	<h5>Contraseña</h5>
            		    	<input type="password" class="input" id="pass">
             	   </div>
-            	</div>
+				</div>
+				<div class="alerta-error">Por favor ingrese su contraseña</div>
+			</div>
 				<input type="button" class="btn" value="Login" onclick="iniciarSesion()">
 				<label>Si no posees cuenta, haz clic aqui</label>
         <a href="register.html" class="btn"> Registrar</a>

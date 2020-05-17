@@ -1,4 +1,3 @@
-
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyCimmToIygcPtrRH4OH7WLAiPO_wmlojNs",
@@ -21,8 +20,6 @@ firebase.analytics();
 
 var app = document.getElementById('app');
 
-//Funcion validacion
-//var elemPrueba = document.getElementById()
 
 //Observador
 firebase.auth().onAuthStateChanged(function (user) {
@@ -45,50 +42,50 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
+
 //Funcion de registro
 function registrar() {
+  if(validarTodosCampos()){
+
   var nombre = document.getElementById('nombre').value;
   var apellido = document.getElementById('apellido').value;
   var email = document.getElementById('email').value;
   var pass = document.getElementById('pass').value;
+  var pass_retry = document.getElementById("pass_retry").value;
   var direccion = document.getElementById('direccion').value;
   var telefono = document.getElementById('telefono').value;
-  //Validaciones previas al registro
-
-  if(nombre === ""){
-  //  $("#campoNombre").after("<div>Mensaje de precaución.</div>");
-  }
-
-  db.collection("clientes").doc().set({
-    nombre: nombre,
-    apellido: apellido,
-    email: email,
-    direccion: direccion,
-    telefono: telefono
-  });
+  //Validaciones propias de Firebase
     firebase.auth().createUserWithEmailAndPassword(email, pass)
-    .then(function(){
-      alert("Usuario registrado");
-    })
-    .catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      if (error.code == "auth/invalid-email") {
-        alert("La dirección de correo electrónico no tiene el formato correcto.");
-      }
-      else if (error.code == "auth/weak-password") {
-        alert("La contraseña debe tener 6 caracteres o mas.");
-      }
-      else if (error.code == "auth/email-already-in-use") {
-        alert("La correo ya esta en uso.");
-      }
-      else {
-        alert(errorCode);
-      }
-    });
+      .then(function(){
+       alert("Usuario registrado");
 
+        db.collection("clientes").doc().set({
+          nombre: nombre,
+          apellido: apellido,
+          email: email,
+          direccion: direccion,
+          telefono: telefono
+        });
+       // alert("Datos registrado");
 
-  
+      })
+      .catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (error.code == "auth/invalid-email") {
+          alert("La dirección de correo electrónico no tiene el formato correcto.");
+        }
+        else if (error.code == "auth/weak-password") {
+          alert("La contraseña debe tener 6 caracteres o mas.");
+        }
+        else if (error.code == "auth/email-already-in-use") {
+          alert("La correo ya esta en uso.");
+        }
+        else {
+          alert(errorCode);
+        }
+      }); 
+  }
 }
 
 //Funcion cerrar sesion

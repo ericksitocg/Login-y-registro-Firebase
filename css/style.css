@@ -21,6 +21,8 @@ body{
 .alerta-error{
   color: red;
   text-align: left;
+  display:none;
+  font-size:small;
 }
 .wave{
 	position: fixed;
